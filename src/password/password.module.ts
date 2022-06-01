@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
-import { AuthController } from './auth.controller';
 import { RabbitMqModule } from '../rabbit-mq/rabbit-mq.module';
-import { AuthService } from './auth.service';
+import { PasswordController } from './password.controller';
+import { PasswordService } from './password.service';
 import { BaseAuthModule } from '../baseAuth/BaseAuth.module';
 import { BaseAuthService } from '../baseAuth/BaseAuth.service';
 
 @Module({
     imports: [RabbitMqModule, BaseAuthModule],
-    providers: [AuthService, BaseAuthService],
-    controllers: [AuthController],
+    providers: [PasswordService, BaseAuthService],
+    controllers: [PasswordController],
 })
-export class AuthModule {}
+export class PasswordModule {}
