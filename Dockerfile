@@ -1,4 +1,4 @@
-FROM node:18.1.0-alpine3.14 AS build
+FROM node:18 AS build
 
 WORKDIR /app
 COPY package*.json ./
@@ -6,10 +6,10 @@ RUN npm i
 COPY . ./
 
 # build js & remove devDependencies from node_modules
-RUN npm run build && npm prune --production
+RUN npm run build
 
-
-FROM node:18.1.0-alpine3.14
+# CMD ["npm", "run", "start:dev"]
+FROM node:18
 
 
 ENV NODE_ENV=production

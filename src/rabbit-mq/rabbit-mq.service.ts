@@ -9,7 +9,7 @@ import { ProductsMessage } from '../product/Dto/ProductsMessage';
 export class RabbitMqService {
     constructor(
         @Inject('auth-service') private readonly authClient: ClientProxy,
-        @Inject('order-service') private readonly orderClient: ClientProxy,
+        @Inject('order-service') private readonly orderClient: ClientProxy
     ) {}
 
     public sendAuthService(pattern: string, data: AuthServiceDto): Promise<void> {

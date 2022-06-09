@@ -9,15 +9,10 @@ async function bootstrap(): Promise<void> {
     app.connectMicroservice({
         transport: Transport.RMQ,
         options: {
-            urls: ['amqp://localhost:5672'], // amqp://rabbitmq:5672
+            urls: ['amqp://rabbitmq:5672'], // amqp://rabbitmq:5672// amqp://localhost:5672
             queueOptions: {
                 durable: false,
             },
-            /* queue: 'auth-service',
-            queueOptions: {
-                durable: false,
-                messageTtl: 10_000,
-            } */
         },
     });
     app.useGlobalPipes(

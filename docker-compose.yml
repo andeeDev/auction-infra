@@ -12,10 +12,15 @@ services:
       args:
         - NODE_ENV="${NODE_ENV}"
       dockerfile: ./Dockerfile
+      target: build
+    command: npm run start:debug
     env_file:
       - .env
     ports:
       - "3000:3000"
+    #volumes:
+    #  - .:/app
+    #  - ./app/node_modules
     networks:
       - nestjs-network
     restart: unless-stopped

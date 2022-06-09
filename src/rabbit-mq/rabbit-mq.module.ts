@@ -56,6 +56,7 @@ import { RabbitMqService } from './rabbit-mq.service';
                 },
             },
         ]),
+        ConfigModule,
     ],
     providers: [RabbitMqService],
     exports: [RabbitMqService],
