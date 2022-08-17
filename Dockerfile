@@ -1,4 +1,4 @@
-FROM node:18 AS build
+FROM node:18-slim AS build
 
 WORKDIR /app
 COPY package*.json ./
@@ -9,7 +9,7 @@ COPY . ./
 RUN npm run build
 
 # CMD ["npm", "run", "start:dev"]
-FROM node:18
+FROM node:18-slim
 
 
 ENV NODE_ENV=production

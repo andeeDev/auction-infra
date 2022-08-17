@@ -10,7 +10,7 @@ export class OrderController {
     constructor(private orderService: OrderService) {}
 
     @Get()
-    async getOrders(@Req() req: Request, @Res() res: Response): Promise<Response> {
+    async getOrders(@Req() req: Request, @Res() res: Response): Promise<any> /* Promise<Response> */ {
         return this.orderService.getAllOrders(req.user, res);
     }
 

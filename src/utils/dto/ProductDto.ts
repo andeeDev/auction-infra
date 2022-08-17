@@ -1,4 +1,4 @@
-import { IsNumber, IsOptional, Length, Max, Min } from 'class-validator';
+import { IsNumber, IsOptional, IsString, Length, Max, Min } from 'class-validator';
 
 export class ProductDto {
     @IsOptional()
@@ -8,6 +8,10 @@ export class ProductDto {
     @IsOptional()
     @Length(0, 200)
     description: string;
+
+    @IsOptional()
+    @IsString()
+    mainImg: string;
 
     @IsOptional()
     @IsNumber({ maxDecimalPlaces: 2 })

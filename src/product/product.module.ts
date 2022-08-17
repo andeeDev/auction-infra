@@ -9,6 +9,6 @@ import { BaseOrderService } from '../baseOrder/BaseOrder.service';
 @Module({
     imports: [RabbitMqModule, BaseOrderModule],
     providers: [ProductService, JwtStrategy, BaseOrderService],
-    controllers: [ProductController, ProductController],
+    controllers: [ProductController],
 })
 export class ProductModule {}

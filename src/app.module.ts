@@ -7,6 +7,10 @@ import { validationSchema } from './config/validation';
 import { PasswordModule } from './password/password.module';
 import { OrderModule } from './order/order.module';
 import { ProductModule } from './product/product.module';
+import { CategoriesModule } from './categories/categories.module';
+import { AuctionProductsService } from './auction-products/auction-products.service';
+import { AuctionProductsModule } from './auction-products/auction-products.module';
+import { BidsModule } from './bids/bids.module';
 
 @Module({
     imports: [
@@ -14,6 +18,7 @@ import { ProductModule } from './product/product.module';
         PasswordModule,
         OrderModule,
         ProductModule,
+        CategoriesModule,
         RabbitMqModule,
         ConfigModule.forRoot({
             isGlobal: true,
@@ -21,8 +26,10 @@ import { ProductModule } from './product/product.module';
             validationSchema,
             envFilePath: ['.env'],
         }),
+        AuctionProductsModule,
+        BidsModule,
     ],
     controllers: [],
-    providers: [],
+    providers: [AuctionProductsService],
 })
 export class AppModule {}

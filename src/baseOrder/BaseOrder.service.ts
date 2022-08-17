@@ -4,6 +4,8 @@ import { ErrorHandler } from '../utils/helpers/ErrorHandler';
 import { RabbitMqService } from '../rabbit-mq/rabbit-mq.service';
 import { ProductsMessage } from '../product/Dto/ProductsMessage';
 import { OrderServiceMessageType } from '../utils/dto/AuthServiceMessageDto';
+import { CreateAuctionProductDto } from '../auction-products/dto/CreateAuctionProductDto';
+import { GetOneProductInfo } from '../auction-products/dto/GetOneProductInfo';
 
 @Injectable()
 export class BaseOrderService {
@@ -11,7 +13,7 @@ export class BaseOrderService {
 
     async sendResponseTowardToOrderService(
         pattern,
-        data: ProductsMessage | OrderServiceMessageType,
+        data: ProductsMessage | OrderServiceMessageType | CreateAuctionProductDto | GetOneProductInfo,
         res: Response,
     ): Promise<Response> {
         try {
