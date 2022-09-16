@@ -14,7 +14,6 @@ export class RpcExceptionFilterMapping implements RpcExceptionFilter<any> {
         const context: HttpArgumentsHost = host.switchToHttp();
         const response: Response = context.getResponse<Response>();
 
-
         if (exception instanceof HttpException) {
             response
                 .status(exception.getStatus())
