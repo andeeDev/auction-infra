@@ -7,6 +7,8 @@ import { ProductsMessage } from '../product/Dto/ProductsMessage';
 import { CreateAuctionProductDto } from '../auction-products/dto/CreateAuctionProductDto';
 import { GetOneProductInfo } from '../auction-products/dto/GetOneProductInfo';
 
+const TIMEOUT: number = 10_000;
+
 @Injectable()
 export class RabbitMqService {
     constructor(
@@ -26,6 +28,6 @@ export class RabbitMqService {
     }
 
     private static send(client: ClientProxy, pattern: string, data: any): Promise<any> {
-        return firstValueFrom(client.send(pattern, data).pipe(timeout(10_000))) /* .toPromise() */;
+        return firstValueFrom(client.send(pattern, data).pipe(timeout(TIMEOUT)));
     }
 }

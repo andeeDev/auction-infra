@@ -1,4 +1,5 @@
-import { IsDateString, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsDate, IsDateString, IsNotEmpty, IsNumber, IsString, MinDate } from 'class-validator';
+import { Transform } from 'class-transformer';
 
 export class CreateAuctionProductDto {
     @IsString()
@@ -21,12 +22,11 @@ export class CreateAuctionProductDto {
     @IsNotEmpty()
     category: string;
 
-    @IsDateString()
     @IsNotEmpty()
-    createdAt: string;
-
-    @IsDateString()
-    @IsNotEmpty()
+    // eslint-disable-next-line @typescript-eslint/typedef
+    @Transform(({ value }) => new Date(value))
+    @IsDate()
+    @MinDate(new Date())
     sellTil: string;
 
     userId: number;

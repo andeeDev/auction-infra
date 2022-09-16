@@ -1,4 +1,4 @@
-import { Catch, RpcExceptionFilter, ArgumentsHost, BadRequestException } from '@nestjs/common';
+import { Catch, RpcExceptionFilter, ArgumentsHost, BadRequestException, HttpException } from '@nestjs/common';
 import { Observable, throwError } from 'rxjs';
 import { Response } from 'express';
 import { HttpArgumentsHost } from '@nestjs/common/interfaces/features/arguments-host.interface';
@@ -14,7 +14,8 @@ export class RpcExceptionFilterMapping implements RpcExceptionFilter<any> {
         const context: HttpArgumentsHost = host.switchToHttp();
         const response: Response = context.getResponse<Response>();
 
-        if (exception instanceof BadRequestException) {
+
+        if (exception instanceof HttpException) {
             response
                 .status(exception.getStatus())
                 .send({ message: (exception.getResponse() as ExceptionResponse).message });

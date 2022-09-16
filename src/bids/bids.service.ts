@@ -10,9 +10,7 @@ export class BidsService {
 
     async getAllBids(id: string, res: Response): Promise<Response> {
         try {
-            const allUsersResponse: IBareUser[] = await this.rabbitMQService.sendAuthService('users-get-all', {
-                id: 123,
-            });
+            const allUsersResponse: IBareUser[] = await this.rabbitMQService.sendAuthService('users-get-all', {});
 
             const bidsResponse: IBid[] = await this.rabbitMQService.sendOrderService('/auction/products/bids', { id });
 
